@@ -1,0 +1,62 @@
+{{define "regis"}}
+<div id="mySignup" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="mySignupModalLabel">Create an <strong>account</strong></h4>
+              </div>
+              <div class="modal-body">
+                <form action="/register" method="post" class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label" for="inputEmail">Nama Pengguna</label>
+                    <div class="controls">
+                      <input type="text" name="uname" id="inputNama" placeholder="Username">
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <label class="control-label" for="inputEmail">Hak Akses</label>
+                    <div class="controls">
+                      <select name="priv">
+                          <option value="user">User</option>
+                          <option value="admin">Admin</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  
+                  
+                  <div class="control-group">
+                    <label class="control-label" for="inputSignupPassword">Password</label>
+                    <div class="controls">
+                      <input type="password" name="pwd" id="inputSignupPassword" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="inputEmail">Nama Lengkap</label>
+                    <div class="controls">
+                      <input type="text" name="nama" id="inputEmail" placeholder="Nama Lengkap">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="inputEmail">e-Mail</label>
+                    <div class="controls">
+                      <input type="text" name="email" id="inputEmail" placeholder="Email">
+                    </div>
+                  </div>
+                  <!--
+                  <div class="control-group">
+                    <label class="control-label" for="inputSignupPassword2">Confirm Password</label>
+                    <div class="controls">
+                      <input type="password" id="inputSignupPassword2" placeholder="Password">
+                    </div>
+                  </div>
+              -->
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn">Sign up</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+{{end}}

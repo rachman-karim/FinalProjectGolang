@@ -1,0 +1,122 @@
+{{define "kontakAdmin"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{with.A}}{{.name}} :: {{.judul}}{{end}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <!-- css -->
+  {{template "css"}}
+
+</head>
+
+<body>
+  <div id="wrapper">
+    
+    <!-- start header -->
+    <header>
+      <div class="container ">
+       
+        <div class="row nomargin">
+          <div class="span12">
+            <div class="headnav">
+              <ul>
+                <li><a href="/logout"> Logout</a></li>
+              </ul>
+            </div>
+            <!-- Signup Modal -->
+            <!-- end signup modal -->
+            <!-- Sign in Modal -->
+            {{template "regis"}}
+            <!-- end signin modal -->
+            <!-- Reset Modal -->
+            <div id="myReset" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="myResetModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="myResetModalLabel">Reset your <strong>password</strong></h4>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label" for="inputResetEmail">Email</label>
+                    <div class="controls">
+                      <input type="text" id="inputResetEmail" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn">Reset password</button>
+                    </div>
+                    <p class="aligncenter margintop20">
+                      We will send instructions on how to reset your password to your inbox
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- end reset modal -->
+          </div>
+        </div>
+        
+              {{with.A}}
+              {{if eq .ssid "admin"}}
+                   {{template "menuAdmin"}}
+              {{else if eq .ssid "user"}}
+                   {{template "menuUser"}}
+              {{end}}{{end}}
+              <!-- end navigation -->
+            
+              <!-- end navigation -->
+           <div class="span12">
+            <div class="solidline">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+    <section id="featured">
+      <!-- start slider -->
+      <!-- Slider -->
+      <div style="width: 100%; margin-bottom: 150px; margin-left: auto; margin-right: auto;">
+      <table border="1" width="50%" align="center" style="font-family: 'Open Sans', Arial, sans-serif;">
+        <tr>
+          <th width="5%">NO</th>
+          <th width="15%">NAMA</th>
+          <th width="15%">E-MAIL</th>
+          <th width="25%">JUDUL</th>
+          <th width="40%">ISI</th>
+        </tr>
+       {{range $x,$v := .B}}
+         <tr>
+          <td align="center" valign="top">{{inc $x 1}}</td>
+          <td valign="top">{{.Nama}}</td>
+          <td valign="top">{{.Email}}</td>
+          <td valign="top">{{.Judul}}</td>
+          <td valign="top"><a href="/detailPesan?id={{.ID}}" style="text-decoration: none;">{{.Isi}} ...</a></td>
+         </tr>
+       {{end}}
+       
+     </table>
+      </div>
+      <!-- end slider -->
+    </section>
+
+     
+      {{template "footer"}}
+      
+  </div>
+  <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+  <!-- javascript
+    ================================================== -->
+
+  {{template "js"}}
+
+</body>
+</html>
+
+{{end}}

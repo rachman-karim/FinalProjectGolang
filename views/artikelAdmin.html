@@ -1,0 +1,132 @@
+{{define "artikel"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{with.A}}{{.name}} :: {{.judul}} :: {{.ssid}}{{end}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <!-- css -->
+  {{template "css"}}
+
+</head>
+
+<body>
+  <div id="wrapper">
+    
+    <!-- start header -->
+    <header>
+      <div class="container ">
+       
+        <div class="row nomargin">
+          <div class="span12">
+            <div class="headnav">
+              <ul>
+                <li><a href="/logout"> Logout</a></li>
+              </ul>
+            </div>
+            <!-- Signup Modal -->
+            <!-- end signup modal -->
+            <!-- Sign in Modal -->
+            {{template "regis"}}
+            <!-- end signin modal -->
+            <!-- Reset Modal -->
+            <div id="myReset" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="myResetModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="myResetModalLabel">Reset your <strong>password</strong></h4>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label" for="inputResetEmail">Email</label>
+                    <div class="controls">
+                      <input type="text" id="inputResetEmail" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn">Reset password</button>
+                    </div>
+                    <p class="aligncenter margintop20">
+                      We will send instructions on how to reset your password to your inbox
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- end reset modal -->
+          </div>
+        </div>
+        
+              {{with.A}}
+              {{if eq .ssid "admin"}}
+                   {{template "menuAdmin"}}
+              {{else if eq .ssid "user"}}
+                   {{template "menuUser"}}
+              {{end}}
+              {{end}}
+              <!-- end navigation -->
+            
+              <!-- end navigation -->
+           <div class="span12">
+            <div class="solidline">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+    <section id="featured">
+      <!-- start slider -->
+      <!-- Slider -->
+      
+      <div style="width: 50%; margin-bottom: 150px; margin-left: auto; margin-right: auto;">
+        
+      <form action="/tambahArtikel"><button type="submit" style="border-radius: 3px;">Tambah Artikel</button></form>
+      <table border="1" width="100%" align="center" style="font-family: 'Open Sans', Arial, sans-serif;">
+        <tr>
+          <th width="5%">NO</th>
+          <th width="20%">JUDUL</th>
+          <th width="40%">RINGKASAN</th>
+          <th width="10%">PUBLISH</th>
+          <th width="10%">PENULIS</th>
+          <th width="5%"colspan="2">AKSI</th>
+        </tr>
+
+       {{range $x, $w := .B}}
+      
+         <tr>
+          <td align="center" valign="top">{{inc $x 1}}</td>
+          <td valign="top"><a href="/editFoto?dift={{.ID}}"><img src="/static/files/{{.Berkas}}" width="100%"/></a><br>{{.Judul}}
+            <br><br><font color="red"><i>* klik gambar untuk mengganti gambar terkait artikel.</i></font></td>
+          <td valign="top"><pre style="background-color: #fff; border: none;"><p align="justify">{{.Isi}} ...</p></pre></td>
+          <td valign="top" align="center">{{if eq .Publish "2"}}tidak{{else if eq .Publish "1"}}ya{{end}}</td>
+          <td valign="top" align="center">{{.Penerbit}}</td>
+          <td valign="top" align="center"><a href="/editArtikel?id={{.ID}}" style="text-decoration: none;">Edit</a></td>
+          <td valign="top" align="center"><a href="/deleteArtikel?idrt={{.ID}}" onclick="return confirm('Anda yakin akan menghapus artikel {{.Judul}} ..?')" style="text-decoration: none;">Delete</a></td>
+         </tr>
+       {{end}}
+       
+     </table>
+   </div>
+   
+      <!-- end slider -->
+    </section>
+      
+      {{template "footer"}}
+    
+  </div>
+  <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+  <!-- javascript
+    ================================================== -->
+ 
+  {{template "js"}}
+
+</body>
+</html>
+
+{{end}}

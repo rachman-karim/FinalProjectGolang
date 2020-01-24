@@ -1,0 +1,115 @@
+{{define "about"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{.name}} :: {{.judul}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <!-- css -->
+  {{template "css"}}
+  
+</head>
+
+<body>
+  <div id="wrapper">
+    
+    <!-- start header -->
+    <header>
+      <div class="container ">
+       
+        <div class="row nomargin">
+          <div class="span12">
+            <div class="headnav">
+              <ul>
+                <!--<li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> Sign up</a></li>-->
+                <li><a href="#mySignin" data-toggle="modal">Login</a></li>
+              </ul>
+            </div>
+            <!-- Signup Modal -->
+            <!-- end signup modal -->
+            <!-- Sign in Modal -->
+            {{template "login"}}
+            <!-- end signin modal -->
+            <!-- Reset Modal -->
+            <div id="myReset" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="myResetModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="myResetModalLabel">Reset your <strong>password</strong></h4>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label" for="inputResetEmail">Email</label>
+                    <div class="controls">
+                      <input type="text" id="inputResetEmail" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn">Reset password</button>
+                    </div>
+                    <p class="aligncenter margintop20">
+                      We will send instructions on how to reset your password to your inbox
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- end reset modal -->
+          </div>
+        </div>
+              {{template "menu"}}
+              <!-- end navigation -->
+              <div class="row">
+          <div class="span12">
+            <div class="solidline">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+    
+    
+    <section id="content">
+      <div class="container">
+        <h2>Kedudukan dan Kewenangan Mahkamah Konstitusi RI</h2><br>
+        <font face="Bookman Old Style, serif" size="6px">Kedudukan</font><br>
+<p align="justify" style="font-size: large; margin-bottom: 50px; margin-top: 15px;">
+Mahkamah Konstitusi merupakan salah satu lembaga negara yang melakukan kekuasaan kehakiman yang merdeka untuk menyelenggarakan pengadilan guna menegakkan hukum dan keadilan</p>
+
+
+<font face="Bookman Old Style, serif" size="6px">Kewenangan</font><br>
+
+<p align="justify" style="font-size: large; margin-top: 15px;">Mahkamah Konstitusi RI mempunyai 4 (empat) kewenangan dan 1 (satu) kewajiban sebagaimana diatur dalam Undang-Undang Dasar 1945. Mahkamah Konstitusi berwenang mengadili pada tingkat pertama dan terakhir yang putusannya bersifat final untuk:</p>
+<ul type="1" style="font-size: large;">
+<li>Menguji undang-undang terhadap Undang-Undang Dasar Negara Republik Indonesia Tahun 1945.</li>
+<li>Memutus Sengketa kewenangan lembaga negara yang kewenangannya diberikan oleh UUD Negara Republik Indonesia Tahun 1945.</li>
+<li>Memutus pembubaran partai politik, dan</li>
+<li>Memutus perselisihan tentang hasil pemilihan umum.</li>
+<li>Mahkamah Konstitusi wajib memberikan putusan atas pendapat DPR bahwa Presiden dan/atau Wakil Presiden diduga melakukan pelanggaran (impeachment)</li>
+</ul>
+
+<p align="justify" style="font-size: large;">Berdasarkan UU Nomor 8 Tahun 2015 Mahkamah Konstitusi memiliki kewenangan tambahan Memutus perselisihan hasil pemilihan Gubernur, Bupati, dan Walikota selama belum terbentuk peradilan khusus.</p>
+        
+      </div>
+    </section>
+   
+     
+       {{template "footer"}}
+       
+  </div>
+  <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+  <!-- javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  {{template "js"}}
+
+</body>
+</html>
+
+{{end}}
